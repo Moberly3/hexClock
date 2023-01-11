@@ -21,7 +21,7 @@ function Clock(){
 
     document.getElementById('clock').innerHTML = clockBackground;
     document.body.style.backgroundColor = clockBackground;
-    document.body.style.text = clockLine;
+    document.body.style.color = clockLine;
     setTimeout(Clock, 1000);
 }
 Clock();
