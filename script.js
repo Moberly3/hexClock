@@ -1,27 +1,37 @@
+var seconds;
+var minutes;
+var hours;
+var clockBackground;
+var clockLine;
+
+function Caller(){
+    Clock();
+    SixChar();
+    Changes();
+}
+
+
 function Clock(){
     var date = new Date();
-    var seconds = date.getSeconds();
-    var minutes = date.getMinutes();
-    var hours = date.getHours();
+    seconds = date.getSeconds();
+    minutes = date.getMinutes();
+    hours = date.getHours();
+    
+}
 
-    if(10 >= seconds){
-        seconds = "0" + seconds;
-    }
+function SixChar() {
+    seconds <= 9 ? seconds = "0" + seconds : seconds = seconds;
+    minutes <= 9 ? minutes = "0" + minutes : minutes = minutes;
+    hours <= 9 ? hours = "0" + hours : hours = hours;
+    clockBackground = "#" + hours + minutes + seconds;
+    clockLine = "#" + seconds + minutes + hours;
+}
 
-    if(10 >= minutes){
-        minutes = "0" + minutes;
-    }
-
-    if(10 >= hours){
-        hours = "0" + hours;
-    }
-
-    var clockBackground = "#" + seconds + minutes + hours;
-    var clockLine = "#" + hours + minutes + seconds;
-
+function Changes(){
     document.getElementById('clock').innerHTML = clockBackground;
     document.body.style.backgroundColor = clockBackground;
     document.body.style.color = clockLine;
-    setTimeout(Clock, 1000);
 }
-Clock();
+
+
+setInterval(Caller, 1000);
